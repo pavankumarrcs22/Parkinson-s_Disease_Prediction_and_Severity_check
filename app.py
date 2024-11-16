@@ -51,5 +51,5 @@ def predict():
     
     return render_template("predict.html", result=result)
 
-# if __name__ == '__main__':
-#     flask_app.run(debug=True)
+if __name__ == '__main__':
+    flask_app.run(debug=True)
