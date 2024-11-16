@@ -1,20 +1,20 @@
 from flask import Flask, request, render_template
 import pickle
 
-flask_app = Flask(__name__)
+app = Flask(__name__)
 
 parkinsons_model = pickle.load(open("parkinsons_model.pkl", "rb"))
 
-@flask_app.route("/")
+@app.route("/")
 def home():
     return render_template("index.html")  
 
-@flask_app.route("/predict_page", methods=["GET"])
+@app.route("/predict_page", methods=["GET"])
 def predict_page():
     return render_template("predict.html") 
 
 
-@flask_app.route("/predict", methods=["POST"])
+@app.route("/predict", methods=["POST"])
 def predict():
     result = None
     if request.method == 'POST':
@@ -52,4 +52,4 @@ def predict():
     return render_template("predict.html", result=result)
 
 if __name__ == '__main__':
-    flask_app.run(debug=True)
+    app.run(debug=True)
