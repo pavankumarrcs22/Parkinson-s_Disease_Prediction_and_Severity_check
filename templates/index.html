@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Manrope:wght@200..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div id="main">
+        <div id="page1">
+            <div id="nav">
+                <div id="logo">
+                    <h3>Healtify</h3>
+                </div>
+                <div id="nav-pages">
+                    <h4>Home</h4>
+                    <h4 id="About-Link">About</h4>
+                    <h4 id="faq-Link">FAQ</h4>
+                    <h4 id="Contact-Link">Contact</h4>
+                </div>
+            </div>
+            <img src="{{ url_for('static', filename='gallery/home-page.png') }}" alt="home page">
+            <div id="center-block">
+                <div id="header">
+                    <h1>The Future <br></h1>
+                    <h2><span>Medical</span> Ways</h2>
+                    <h3>Leverage the power of AI for personalized risk assessment</h3>
+                </div>
+                <div id="header-img">
+                    <img src="{{ url_for('static', filename='gallery/Header.pmg') }}" alt="header">
+                </div>
+            </div>
+        </div>
+        <div id="page2">
+            <h3>Our Services</h3>
+            <h2>Empowering Early Detection: Predicting Heart <br>Disease, Diabetes & Parkinson's</h2>
+            <div id="elems">
+                <div id="elem">
+                    <div id="image-div">
+                        <img src="https://media.istockphoto.com/id/1477011690/vector/overweight-black-woman-having-a-heart-disease.jpg?s=612x612&w=0&k=20&c=e4rEfG-_p66eK0sfrfhCV9fvKydmHoYTRfUDDns01g4="
+                            alt="">
+                    </div>
+                    <h4>Health Disease</h4>
+                    <h5>Assess your heart health Risk</h5>
+                    <button id="predict-button">Predict</button>
+                </div>
+                <div id="elem">
+                    <div id="image-div">
+                        <img src="{{ url_for('static', filename='gallery/docter.jpeg') }}" alt="docter">
+                    </div>
+                    <h4>Diabetes</h4>
+                    <h5>Assess your Diabetes Risk</h5>
+                    <button id="predict-button">Predict</button>
+                </div>
+                <div id="elem">
+                    <div id="image-div">
+                        <img src="{{ url_for('static', filename='gallery/medical.jpeg') }}" alt="medical">
+                    </div>
+                    <h4>Parkinsons</h4>
+                    <h5>Assess your Parkinsons Risk</h5>
+                    <div id="predict_button">
+                        <a href="{{ url_for('predict_page') }}">
+                            <button type="submit" name="predictbutton">
+                                Predict Now <span class="symbol">&#9679;</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="page3">
+            <img src="{{ url_for('static', filename='gallery/about-us.png') }}" alt="about us">
+            <div id="text-div">
+                <h2>ABOUT US</h2>
+                <h1>Helping Patient <br>with the power of AI</h1>
+                <h4>Healtify is a team of passionate individuals dedicated to revolutionizing preventative healthcare through the power of machine learning. We believe early detection is key to managing chronic diseases like heart disease, diabetes, and Parkinson's.</h4>
+            </div>
+            <!-- <div id="img-div">
+                <img src="About-us-docter.jpeg" alt="">
+            </div> -->
+        </div>
+        <div id="page4">
+            <div id="left-block">
+                <h2>FAQ</h2>
+                <h1>Do you have any <br>questions for us?</h1>
+                <h4>If there are question you want to ask. <br>We will answer all your question.</h4>
+                <div id="button-div">
+                    <div id="email-button">
+                        <img src="{{ url_for('static', filename='gallery/email.png') }}" alt="email">
+                        <input type="email" id="mail" name="mail"placeholder="Enter your email" required>
+                    </div>
+                    <div id="submit-button">
+                        <h5>Submit</h5>
+                    </div>
+                </div>
+            </div>
+            <div id="right-block">
+                <ul id="accordion">
+                    <li>
+                        <label for="first">What disease does your model predict? <span><img src="{{ url_for('static', filename='gallery/arrow.png') }}" alt="arrow"></span></label>
+                        <input type="radio" name="accordion" id="first" checked>
+                        <div class="content">
+                            <p>Our model focuses on predicitng Heart disease, Diabetes, and Parkinson's disease</p>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="second">What kind of information does your tool use to predict these diseases? <span><img src="{{ url_for('static', filename='gallery/arrow.png') }}" alt="arrow"></span></label>
+                        <input type="radio" name="accordion" id="second" checked>
+                        <div class="content">
+                            <p>Our tool uses various factors, such as age, gender, family history, lifestyle habits, and potentially some anonymized medical data</p>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="third">What should I do if my risk score is high? <span><img src="{{ url_for('static', filename='gallery/arrow.png') }}" alt="arrow"></span></label>
+                        <input type="radio" name="accordion" id="third" checked>
+                        <div class="content">
+                            <p>A high risk score doesn't necessarily mean you have the disease. However, it suggests you might benefit from talking to your doctor. </p>
+                        </div>
+                    </li>
+                    <li>
+                        <label for="fourth">What disease does your model predict? <span><img src="{{ url_for('static', filename='gallery/arrow.png') }}" alt="arrow"></span></label>
+                        <input type="radio" name="accordion" id="fourth" checked>
+                        <div class="content">
+                            <p>Our model focuses on predicitng Heart disease, Diabetes, and Parkinson's disease</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div id="page5">
+            <h3>Contact Us</h3>
+            <h4>Any question or remarks? Just write us a message!</h4>
+            <div id="center-box">
+                <div id="left-box">
+                    <div id="contact-header">
+                        <h3>Contact Information</h3>
+                        <h5>Say something to start a live chat!</h5>
+                    </div>
+                    <div id="contact-info">
+                        <div id="info">
+                            <img src="{{ url_for('static', filename='gallery/phone.png') }}" alt="phone">
+                            <h4>+91 86193XXXXX</h4>
+                        </div>
+                        <div id="info">
+                            <img src="{{ url_for('static', filename='gallery/email.png') }}" alt="mail">
+                            <h4>demo@gmail.com</h4>
+                        </div>
+                        <div id="info">
+                            <img src="{{ url_for('static', filename='gallery/location.png') }}" alt="location">
+                            <h4>VIT Bhopal University, Kotri Kalan,<br> Ashta, Near, Indore Road, Bhopal,<br> Madhya Pradesh 466114</h4>
+                        </div>
+                    </div>
+                </div>
+                <div id="right-box">
+                    <div id="right-box-top">
+                        <div id="name-info">
+                            <div id="info">
+                                <h5>First Name</h5>
+                                <input type="f-name" id="name" name="f-name"placeholder="Enter your first name" required>
+                            </div>
+                            <div id="info">
+                                <h5>Second Name</h5>
+                                <input type="s-name" id="name" name="s-name"placeholder="Enter your last name" required>
+                            </div>
+                        </div>
+                        <div id="phone-info">
+                            <div id="info">
+                                <h5>Email</h5>
+                                <input type="e-name" id="name" name="e-name"placeholder="Enter your email" required>
+                            </div>
+                            <div id="info">
+                                <h5>Phone Number</h5>
+                                <input type="p-name" id="name" name="p-name"placeholder="Enter your phone number" required>
+                            </div>
+                    </div>
+                    </div>
+                    <div id="right-box-middle">
+                        <h4>Select Subject?</h4>
+                        <div id="labels">
+                            <div id="label-input">
+                                <label> General Inquiries </label>
+                            <input type="radio" id="Select" name="title"  required>
+                            </div>
+                            <div id="label-input">
+                                <label> Technical Inquiries </label>
+                                <input type="radio" id="Select" name="title"  required>
+                            </div>
+                            <div id="label-input">
+                                <label> Medical Disclaimer </label>
+                            <input type="radio" id="Select" name="title"  required>
+                            </div>
+                            <div id="label-input">
+                                <label> Data Privacy and Security </label>
+                            <input type="radio" id="Select" name="title"  required>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="right-box-bottom">
+                        <h4>Message<h4>
+                        <input type="msg" id="msg" name="msg"placeholder="Write your message.." required>
+                        <div id="message-button">
+                            <button id="Send-Message">Send Message</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="page6">
+            <div id="top-footer">
+                <div id="top-left-footer">
+                    <h2>Healtify</h2>
+                    <h5>Don't wait for symptoms - take control of <br> your health with early risk assessment.</h5>
+                </div>
+                <div id="top-right-footer">
+                    <div id="landings">
+                        <h3>Landings</h3>
+                        <h4 id="Home-link">Home</h4>
+                        <h4 id="About-Link">About</h4>
+                    </div>
+                    <div id="social">
+                        <h3>Socials</h3>
+                        <h4><a href="https://www.linkedin.com/in/bhavesh-bhakta/">Linkedin</a></h4>
+                        <h4><a href="https://github.com/BhaveshBhakta">Github</a></h4>
+                    </div>
+                </div>
+            </div>
+            <div id="bottom-footer">
+                <img src="{{ url_for('static', filename='gallery/footer.png') }}" alt="footer">
+    
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
