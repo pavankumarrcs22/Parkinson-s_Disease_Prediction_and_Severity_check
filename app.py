@@ -38,8 +38,8 @@ def predict():
             request.form.get('HNR'),
             request.form.get('RPDE'),
             request.form.get('DFA'),
-            request.form.get('spread1'),
-            request.form.get('spread2'),
+            request.form.get('Spread1'),
+            request.form.get('Spread2'),
             request.form.get('D2'),
             request.form.get('PPE')
         ]

@@ -48,23 +48,41 @@
                         —your health, simplified!</h3>
 
                     <div id="predict_button">
-                       
-                            <button type="submit" name="predictbutton">
-                                Predict Now <span class="symbol">
-                                    &#9679;</span>
-                            </button>
-                
+
+                        <button type="submit" name="predictbutton">
+                            Predict Now <span class="symbol">
+                                &#9679;</span>
+                        </button>
+
                     </div>
                 </div>
                 <div id="image-block">
                     <div id="block-1">
-                        <div id="box1"></div>
-                        <div id="box2"></div>
+                        <div id="box1">
+                            <div class="image-container">
+                                <img src="{{ url_for('static', filename='gallery/landing1.jpg') }}" alt="Image">
+                              </div>
+                        </div>
+
+
+                        <div id="box2">
+                            <div class="image-container">
+                                <img src="{{ url_for('static', filename='gallery/landing2.jpg') }}" alt="Image">
+                              </div>
+                        </div>
                     </div>
 
                     <div id="block-2">
-                        <div id="box3"></div>
-                        <div id="box4"></div>
+                        <div id="box3">
+                            <div class="image-container">
+                                <img src="{{ url_for('static', filename='gallery/landing3.jpg') }}" alt="Image">
+                              </div>
+                        </div>
+                        <div id="box4">
+                            <div class="image-container">
+                                <img src="{{ url_for('static', filename='gallery/landing4.jpg') }}" alt="Image">
+                              </div>
+                        </div>
                     </div>
 
                 </div>
@@ -82,7 +100,11 @@
 
             <div id="content">
                 <div id="image-box">
-                    <div id="image"></div>
+                    <div id="image">
+                        <div class="image-container">
+                            <img src="{{ url_for('static', filename='gallery/heartdisease.jpg') }}" alt="Heart Disease">
+                          </div>
+                    </div>
                 </div>
                 <div id="content-box">
                     <h1>Heart Disease <br> Prediction</h1>
@@ -171,14 +193,22 @@
                     </div>
                 </div>
                 <div id="image-box">
-                    <div id="image"></div>
+                    <div id="image">
+                        <div class="image-container">
+                            <img src="{{ url_for('static', filename='gallery/diabetes.jpg') }}" alt="Image">
+                          </div>
+                    </div>
                 </div>
             </div>
         </div>
         <div id="page4">
             <div id="content">
                 <div id="image-box">
-                    <div id="image"></div>
+                    <div id="image">
+                        <div class="image-container">
+                            <img src="{{ url_for('static', filename='gallery/parkinsons.jpg') }}" alt="Image">
+                          </div>
+                    </div>
                 </div>
                 <div id="content-box">
                     <h1>Parkinsons Disease <br> Prediction</h1>
