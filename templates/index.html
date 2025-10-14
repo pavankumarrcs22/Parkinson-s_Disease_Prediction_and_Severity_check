@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css">
 
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <!-- <link rel="stylesheet" href="style.css"> -->
+
 </head>
 
 <body>
@@ -37,169 +37,122 @@
             </div>
             <div id="center-block">
                 <div id="header">
-                    <h1>The Future <br></h1>
+                    <h1>Step Into the <br>Future</h1>
+
                     <div id="block-text">
                         <div id="h1-block">
                             <h1>Medical</h1>
                         </div>
-                        <h1>Ways</h1>
+                        <h1>Innovation</h1>
                     </div>
-                    <h3>Predict multiple diseases quickly and <br> accurately with our advanced platform <br>
-                        —your health, simplified!</h3>
+
+                    <h3>Detect Parkinson's disease faster than ever <br>
+                        Experience precision, care, and insight <br>
+                        —because your health deserves the best!</h3>
 
                     <div id="predict_button">
-
-                        <button type="submit" name="predictbutton">
-                            Predict Now <span class="symbol">
-                                &#9679;</span>
-                        </button>
-
+                        <a href="{{ url_for('predict_page') }}">
+                            <button type="submit" name="predictbutton">
+                                Predict Now <span class="symbol">&#9679;</span>
+                            </button>
+                        </a>
                     </div>
                 </div>
+
                 <div id="image-block">
                     <div id="block-1">
                         <div id="box1">
                             <div class="image-container">
                                 <img src="{{ url_for('static', filename='gallery/landing1.jpg') }}" alt="Image">
-                              </div>
+                            </div>
                         </div>
-
-
                         <div id="box2">
                             <div class="image-container">
                                 <img src="{{ url_for('static', filename='gallery/landing2.jpg') }}" alt="Image">
-                              </div>
+                            </div>
                         </div>
                     </div>
-
                     <div id="block-2">
                         <div id="box3">
                             <div class="image-container">
                                 <img src="{{ url_for('static', filename='gallery/landing3.jpg') }}" alt="Image">
-                              </div>
+                            </div>
                         </div>
                         <div id="box4">
                             <div class="image-container">
                                 <img src="{{ url_for('static', filename='gallery/landing4.jpg') }}" alt="Image">
-                              </div>
+                            </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
+        <!-- Only Parkinson's Disease Service -->
         <div id="page2">
             <div id="header-div">
-                <h1>Our Services</h1>
+                <h1>Our Service</h1>
                 <div id="string">
                     <svg id="string-line" width="900" height="200" viewBox="0 0 1000 200">
                         <path d="M 10 100 Q 500 100 990 100" stroke="white" fill="transparent" stroke-width="2" />
                     </svg>
                 </div>
             </div>
-
-            <div id="content">
-                <div id="image-box">
-                    <div id="image">
-                        <div class="image-container">
-                            <img src="{{ url_for('static', filename='gallery/heartdisease.jpg') }}" alt="Heart Disease">
-                          </div>
-                    </div>
-                </div>
-                <div id="content-box">
-                    <h1>Heart Disease <br> Prediction</h1>
-
-                    <h2>Our platform leverages advanced machine learning models to predict various health diseases based
-                        on user-provided data. By analyzing key health parameters, we aim to provide early insights that
-                        empower individuals to take proactive measures for their well-being. </h2>
-
-                    <div id="predict_button">
-                        <a href="https://heart-disease-prediction-gvyt.onrender.com">
-                            <button type="submit" name="predictbutton">
-                                Predict Health Disease <span class="symbol">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-                                        <path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z" />
-                                    </svg>
-                                    &#9679;</span>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="page3">
-            <div id="content">
-                <div id="content-box">
-                    <h1>Diabetes Disease <br> Prediction</h1>
-
-                    <h2>Our diabetes prediction model utilizes machine learning to analyze health metrics and identify
-                        the likelihood of developing diabetes. By providing personalized insights, we aim to promote
-                        early detection and encourage timely preventive measures. </h2>
-
-                    <div id="predict_button">
-                        <a href="https://diabetes-prediction-q603.onrender.com">
-                            <button type="submit" name="predictbutton">
-                                Predict Diabetes Disease <span class="symbol">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
-                                        <path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z" />
-                                    </svg>
-                                    &#9679;</span>
-                            </button>
-                        </a>
-                    </div>
-                </div>
-                <div id="image-box">
-                    <div id="image">
-                        <div class="image-container">
-                            <img src="{{ url_for('static', filename='gallery/diabetes.jpg') }}" alt="Image">
-                          </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div id="page4">
             <div id="content">
                 <div id="image-box">
                     <div id="image">
                         <div class="image-container">
                             <img src="{{ url_for('static', filename='gallery/parkinsons.jpg') }}" alt="Image">
-                          </div>
+                        </div>
                     </div>
                 </div>
                 <div id="content-box">
-                    <h1>Parkinsons Disease <br> Prediction</h1>
+                    <h1>Unlock Early Insights <br> Into Parkinson's Disease</h1>
 
-                    <h2>Our Parkinson's disease prediction model harnesses machine learning to assess health data and
-                        detect potential early signs of Parkinson's. This enables timely intervention and supports
-                        better management of the condition.</h2>
+                    <h2>
+                        Our AI-powered platform scans health patterns to identify early signs of Parkinson's disease.
+                        Get ahead of the condition, make informed decisions, and take proactive steps toward a healthier
+                        future.
+                    </h2>
 
                     <div id="predict_button">
                         <a href="{{ url_for('predict_page') }}">
                             <button type="submit" name="predictbutton">
-                                Predict Parkinsons Disease <span class="symbol">
+                                Discover Your Risk <span class="symbol">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24">
                                         <path d="M7 7h8.586L5.293 17.293l1.414 1.414L17 8.414V17h2V5H7v2z" />
                                     </svg>
-                                    &#9679;</span>
+                                    &#9679;
+                                </span>
                             </button>
+
                         </a>
+                        <button type="button" id="severityButton" style="display:none;" class="btn">
+                            Check Severity
+                        </button>
                     </div>
+
                 </div>
+
             </div>
         </div>
+        <!-- About Us -->
         <div id="page5">
             <h1>ABOUT US</h1>
-            <h2><span>Healtify</span> is a team of passionate individuals dedicated to revolutionizing <br> preventative
-                healthcare
-                through the <span>power of machine learning</span>. We <br> believe early detection is key to managing
-                chronic
-                diseases like <br> <span>heart disease, diabetes, and Parkinson's</span>.</h2>
+            <h2>
+                <span>Healtify</span> is a team of innovators on a mission to transform <br>
+                preventative healthcare with the <span>power of machine learning</span>.
+                We are driven by the belief that early detection is the key <br>
+                to managing chronic conditions and improving lives, especially for <br>
+                those at risk of <span>Parkinson's disease</span>.
+            </h2>
         </div>
+
+        <!-- FAQ -->
         <div id="page6">
             <div id="left-block">
                 <h2>FAQ</h2>
-                <h1>Do you have any <br>questions for us?</h1>
-                <h4>If there are question you want to ask. <br>We will answer all your question.</h4>
+                <h1>Have Questions? <br>We’ve Got Answers!</h1>
+                <h4>Wondering how our platform works or what to do next? <br>Submit your email and we’ll guide you.</h4>
                 <div id="button-div">
                     <div id="email-button">
                         <input type="email" id="mail" name="mail" placeholder="Enter your email" required>
@@ -209,49 +162,49 @@
                     </div>
                 </div>
             </div>
+
             <div id="right-block">
                 <ul id="accordion">
                     <li>
-                        <label for="first">What disease does your model predict? <span><img
-                                    src="{{ url_for('static', filename='gallery/arrow.png') }}"
-                                    alt="arrow"></span></label>
+                        <label for="first">
+                            What disease does your model detect?
+                            <span><img src="{{ url_for('static', filename='gallery/arrow.png') }}" alt="arrow"></span>
+                        </label>
                         <input type="radio" name="accordion" id="first" checked>
                         <div class="content">
-                            <p>Our model focuses on predicitng Heart disease, Diabetes, and Parkinson's disease</p>
+                            <p>Our model is designed to detect early signs of Parkinson's disease with accuracy and
+                                speed.</p>
                         </div>
                     </li>
+
                     <li>
-                        <label for="second">What kind of information does your tool use to predict these diseases?
-                            <span><img src="{{ url_for('static', filename='gallery/arrow.png') }}"
-                                    alt="arrow"></span></label>
-                        <input type="radio" name="accordion" id="second" checked>
+                        <label for="second">
+                            What data does the tool use for predictions?
+                            <span><img src="{{ url_for('static', filename='gallery/arrow.png') }}" alt="arrow"></span>
+                        </label>
+                        <input type="radio" name="accordion" id="second">
                         <div class="content">
-                            <p>Our tool uses various factors, such as age, gender, family history, lifestyle habits, and
-                                potentially some anonymized medical data</p>
+                            <p>We analyze key factors such as age, gender, family history, lifestyle habits, and
+                                anonymized medical data to make predictions.</p>
                         </div>
                     </li>
+
                     <li>
-                        <label for="third">What should I do if my risk score is high? <span><img
-                                    src="{{ url_for('static', filename='gallery/arrow.png') }}"
-                                    alt="arrow"></span></label>
-                        <input type="radio" name="accordion" id="third" checked>
+                        <label for="third">
+                            What should I do if my risk score is high?
+                            <span><img src="{{ url_for('static', filename='gallery/arrow.png') }}" alt="arrow"></span>
+                        </label>
+                        <input type="radio" name="accordion" id="third">
                         <div class="content">
-                            <p>A high risk score doesn't necessarily mean you have the disease. However, it suggests you
-                                might benefit from talking to your doctor. </p>
-                        </div>
-                    </li>
-                    <li>
-                        <label for="fourth">What disease does your model predict? <span><img
-                                    src="{{ url_for('static', filename='gallery/arrow.png') }}"
-                                    alt="arrow"></span></label>
-                        <input type="radio" name="accordion" id="fourth" checked>
-                        <div class="content">
-                            <p>Our model focuses on predicitng Heart disease, Diabetes, and Parkinson's disease</p>
+                            <p>A higher risk score doesn’t confirm a diagnosis, but it’s a prompt to consult your doctor
+                                for further evaluation.</p>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
+
+        <!-- Contact Us -->
         <div id="page7">
             <h3>Contact Us</h3>
             <h4>Any question or remarks? Just write us a message!</h4>
@@ -264,16 +217,15 @@
                     <div id="contact-info">
                         <div id="info">
                             <img src="{{ url_for('static', filename='gallery/phone.png') }}" alt="phone">
-                            <h4>+91 86193XXXXX</h4>
+                            <h4>+91 89518XXXXX</h4>
                         </div>
                         <div id="info">
                             <img src="{{ url_for('static', filename='gallery/email.png') }}" alt="mail">
-                            <h4>bhaveshbhakta9460@gmail.com</h4>
+                            <h4>pavankumar56214@gmail.com</h4>
                         </div>
                         <div id="info">
                             <img src="{{ url_for('static', filename='gallery/location.png') }}" alt="location">
-                            <h4>VIT Bhopal University, Kotri Kalan,<br> Ashta, Near, Indore Road, Bhopal,<br> Madhya
-                                Pradesh 466114</h4>
+                            <h4>R.V.College of Engineering,<br>Banglore, Karnataka 560059</h4>
                         </div>
                     </div>
                 </div>
@@ -337,19 +289,14 @@
         <div id="page8">
             <div id="footer">
                 <div id="copyright">
-                    <H2>BHAVESH BHAKTA © 2024</H2>
+                    <H2>Pavan Kumar © 2025</H2>
                 </div>
-
                 <div id="links">
-                    <h2><a href="https://github.com/BhaveshBhakta"
+                    <h2><a href="https://github.com/pavankumarrcs22"
                             style="text-decoration: none; color: inherit;">GITHUB</a></h2>
-                    <h2><a href="https://www.linkedin.com/in/bhavesh-bhakta/"
+                    <h2><a href="https://www.linkedin.com/in/pavankumarr2004/"
                             style="text-decoration: none; color: inherit;">LINKEDIN</a></h2>
-                    <h2><a href="https://www.figma.com/@bhaveshbhakta"
-                            style="text-decoration: none; color: inherit;">FIGMA</a></h2>
                 </div>
-
-
                 <div id="arrow">
                     <H2>BACK TOP TOP</H2><svg data-name="1-Arrow Up" xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 32 32">
@@ -357,10 +304,8 @@
                     </svg>
                 </div>
             </div>
-
         </div>
     </div>
-
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.42/dist/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"
         integrity="sha512-7eHRwcbYkK4d9g/6tD/mhkf++eoTHwpNM9woBxtPUBWm67zeAfFC+HrdoE2GanKeocly/VxeLvIqwvCdk7qScg=="
@@ -370,6 +315,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     <!-- <script src="script.js"></script> -->
+     
 </body>
 
 </html>

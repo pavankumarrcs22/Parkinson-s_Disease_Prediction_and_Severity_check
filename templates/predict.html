@@ -9,80 +9,40 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/predict_style.css') }}">
-     <!-- <link rel="stylesheet" href="predict_style.css"> -->
+    <link rel="stylesheet" href="predict_style.css">
 </head>
 
 <body>
 
     <div class="container">
         <div class="header">
-            <h1>Parkinson's Disease Prediction</h1>  
+            <h1>Parkinson's Disease Prediction</h1>
             <div class="back-home">
                 <a href="/" class="btn">Home</a>
             </div>
         </div>
 
-        <form method="POST" action="/predict">
+        <form method="POST" id="predictionForm" action="/predict">
 
             <div class="form-group">
-                <label for="fo">MDVP:Fo(Hz) - Average vocal fundamental frequency</label>
+                <label for="fo">MDVP:Fo(Hz)</label>
                 <input type="number" step="any" id="fo" name="fo" required>
             </div>
             <div class="form-group">
-                <label for="fhi">MDVP:Fhi(Hz) - Maximum vocal fundamental frequency</label>
+                <label for="fhi">MDVP:Fhi(Hz)</label>
                 <input type="number" step="any" id="fhi" name="fhi" required>
             </div>
             <div class="form-group">
-                <label for="flo">MDVP:Flo(Hz) - Minimum vocal fundamental frequency</label>
+                <label for="flo">MDVP:Flo(Hz)</label>
                 <input type="number" step="any" id="flo" name="flo" required>
             </div>
             <div class="form-group">
-                <label for="Jitter_percent">MDVP:Jitter(%)</label>
-                <input type="number" step="any" id="Jitter_percent" name="Jitter_percent" required>
-            </div>
-            <div class="form-group">
-                <label for="Jitter_Abs">MDVP:Jitter(Abs)</label>
-                <input type="number" step="any" id="Jitter_Abs" name="Jitter_Abs" required>
-            </div>
-            <div class="form-group">
-                <label for="RAP">MDVP:RAP</label>
-                <input type="number" step="any" id="RAP" name="RAP" required>
-            </div>
-            <div class="form-group">
-                <label for="PPQ">MDVP:PPQ</label>
-                <input type="number" step="any" id="PPQ" name="PPQ" required>
-            </div>
-            <div class="form-group">
-                <label for="DDP">Jitter:DDP</label>
-                <input type="number" step="any" id="DDP" name="DDP" required>
+                <label for="Jitter">MDVP:Jitter</label>
+                <input type="number" step="any" id="Jitter" name="Jitter" required>
             </div>
             <div class="form-group">
                 <label for="Shimmer">MDVP:Shimmer</label>
                 <input type="number" step="any" id="Shimmer" name="Shimmer" required>
-            </div>
-            <div class="form-group">
-                <label for="Shimmer_dB">MDVP:Shimmer(dB)</label>
-                <input type="number" step="any" id="Shimmer_dB" name="Shimmer_dB" required>
-            </div>
-            <div class="form-group">
-                <label for="APQ3">Shimmer:APQ3</label>
-                <input type="number" step="any" id="APQ3" name="APQ3" required>
-            </div>
-            <div class="form-group">
-                <label for="APQ5">Shimmer:APQ5</label>
-                <input type="number" step="any" id="APQ5" name="APQ5" required>
-            </div>
-            <div class="form-group">
-                <label for="APQ">MDVP:APQ</label>
-                <input type="number" step="any" id="APQ" name="APQ" required>
-            </div>
-            <div class="form-group">
-                <label for="DDA">Shimmer:DDA</label>
-                <input type="number" step="any" id="DDA" name="DDA" required>
-            </div>
-            <div class="form-group">
-                <label for="NHR">NHR</label>
-                <input type="number" step="any" id="NHR" name="NHR" required>
             </div>
             <div class="form-group">
                 <label for="HNR">HNR</label>
@@ -108,26 +68,123 @@
                 <label for="D2">D2</label>
                 <input type="number" step="any" id="D2" name="D2" required>
             </div>
-            <div class="form-group">
-                <label for="PPE">PPE</label>
-                <input type="number" step="any" id="PPE" name="PPE" required>
-            </div>
 
             <button type="submit">Predict</button>
-
-
-            {% if result %}
-            <div class="result {% if 'has Parkinson' in result %}positive{% else %}negative{% endif %}">
-                {{ result }}
-            </div>
-            {% endif %}
+            <div class="loading" id="loading" style="display:none;">Predicting...</div>
+            <div class="result" id="result"></div>
+            <div class="instructions" id="instructions" style="display:none;"></div>
 
         </form>
 
     </div>
 
     <script src="{{ url_for('static', filename='js/predict_script.js') }}"></script>
-     <!-- <script src="predict_script.js"></script> -->
+    <!-- <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('predictionForm');
+    const resultDiv = document.getElementById('result');
+    const loadingDiv = document.getElementById('loading');
+    const instructionsDiv = document.getElementById('instructions');
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        resultDiv.innerHTML = '';
+        instructionsDiv.style.display = 'none';
+        loadingDiv.style.display = 'block';
+
+        // Collect form data
+        const formData = new FormData(form);
+        const data = {};
+        ['fo', 'fhi', 'flo', 'Jitter', 'Shimmer', 'HNR', 'RPDE', 'DFA', 'Spread1', 'Spread2', 'D2'].forEach(key => {
+            data[key] = parseFloat(formData.get(key));
+        });
+
+        try {
+            const response = await fetch('/predict', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            loadingDiv.style.display = 'none';
+
+            // Use only XGBoost model
+            const xgbLabel = result.predictions.XGBoost.label;
+            const xgbProb = result.predictions.XGBoost.prob;
+
+            resultDiv.innerHTML = `XGBoost Prediction: ${xgbLabel} (Probability: ${xgbProb})`;
+            resultDiv.className = 'result ' + (xgbLabel.includes('Parkinson') ? 'positive' : 'negative');
+
+        } catch (err) {
+            loadingDiv.style.display = 'none';
+            resultDiv.innerHTML = 'Error occurred. Try again!';
+            resultDiv.className = 'result negative';
+            console.error(err);
+        }
+    });
+});
+</script> -->
+
+
+    <script>
+        const form = document.getElementById('predictionForm');
+        const resultDiv = document.getElementById('result');
+        const loadingDiv = document.getElementById('loading');
+
+        // Create severity button dynamically
+        const severityBtn = document.createElement('button');
+        severityBtn.textContent = 'Check Severity';
+        severityBtn.type = 'button';
+        severityBtn.style.display = 'none';
+        severityBtn.className = 'btn';
+        form.appendChild(severityBtn);
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            resultDiv.innerHTML = '';
+            severityBtn.style.display = 'none';
+            loadingDiv.style.display = 'block';
+
+            const formData = new FormData(form);
+            const data = {};
+            formData.forEach((value, key) => data[key] = parseFloat(value));
+
+            try {
+                // Call /predict endpoint
+                const response = await fetch('/predict', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+                loadingDiv.style.display = 'none';
+
+                // Show XGBoost prediction
+                const xgbLabel = result.predictions.XGBoost.label;
+                const xgbProb = result.predictions.XGBoost.prob;
+                resultDiv.innerHTML = `XGBoost Prediction: ${xgbLabel} (Probability: ${xgbProb})`;
+                resultDiv.className = 'result ' + (xgbLabel.includes('Parkinson') ? 'positive' : 'negative');
+
+                // Show severity button if Parkinson's detected
+                if (xgbLabel.includes("Parkinson")) {
+                    severityBtn.style.display = 'inline-block';
+                    severityBtn.onclick = () => {
+                        window.location.href = "/severity_page";
+                    };
+                }
+
+            } catch (err) {
+                loadingDiv.style.display = 'none';
+                resultDiv.innerHTML = 'Error occurred. Try again!';
+                resultDiv.className = 'result negative';
+                console.error(err);
+            }
+        });
+    </script>
+
+
 </body>
 
 </html>

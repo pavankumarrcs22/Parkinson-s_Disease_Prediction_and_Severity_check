@@ -1,70 +1,49 @@
-# Parkinson's Disease Prediction
+🌟 Healtify – AI-Powered Parkinson's Disease Prediction and Severity check
 
-This repository showcases a machine learning-driven solution for predicting Parkinson's disease, combining multiple advanced algorithms with an interactive and dynamic web-based interface.  
+Healtify is a modern, interactive web application that uses machine learning to detect Parkinson’s disease early and assess its severity, along with personalized precautions.
 
-## Project Overview  
+⚡ Features
 
-Parkinson's disease is a progressive nervous system disorder that affects movement. Early detection is crucial for effective management. This project aims to assist in this process by using a predictive model powered by machine learning, coupled with a user-friendly web interface that makes the tool accessible to everyone.  
+Accurate Predictions: Uses XGBoost, SVM, Logistic Regression with ensemble learning.
 
-## Key Features  
+Severity Assessment: Multi-class model classifies Mild, Moderate, Severe stages.
 
-### Machine Learning Models  
-- **Algorithm Diversity**: The model leverages multiple algorithms, including Logistic Regression, Decision Tree Classifier, K-Nearest Neighbors Classifier, and Support Vector Machines (SVM).  
-- **Ensemble Learning**: A stacking classifier is employed to integrate predictions from these models, providing the most accurate and reliable output possible.  
+Precautions & Safety Advice: Provides stage-specific recommendations to manage symptoms and improve quality of life.
 
-### User Interaction  
-- **Input Parameters**: The interface requires users to input medical parameters such as NHR, HNR, d2, and PPE, which are critical in diagnosing Parkinson's disease.  
-- **Prediction Output**: Based on the input values, the tool predicts whether Parkinson's disease is present or not, helping users understand their health risks.  
+Dynamic Web Interface: Responsive UI with smooth animations (Lenis & GSAP).
 
-### Web Design and User Experience  
-- **Lenis for Mouse Trails**: Adds a visually appealing dynamic mouse trail effect for an engaging user interaction.  
-- **GSAP Animations**: Implements smooth animations that elevate the overall look and feel of the website.  
-- **ScrollTrigger for Dynamic Routing**: Enables seamless transitions between pages and sections, enhancing navigation and responsiveness.  
+Interactive Flow: “Check Severity” button appears only if Parkinson’s is detected.
 
-## Technical Highlights  
-This project integrates cutting-edge machine learning techniques with modern web development practices:  
-- **Data Analysis**: The algorithms are trained on comprehensive datasets, ensuring robustness and accuracy.  
-- **Scalability**: Designed with extensibility in mind, allowing for future incorporation of additional features or models.  
-- **Responsive Design**: The interface adapts to various devices, ensuring accessibility for all users.  
+Optional AI Advice: Personalized AI-generated safety tips for early-stage detection.
 
-## Purpose and Applications  
-The primary goal of this project is to make an impactful contribution to healthcare by providing an efficient and interactive tool for Parkinson's disease prediction. While targeted at healthcare professionals and patients, the platform also serves as an excellent educational resource for individuals learning about machine learning applications in medicine.  
+🚀 Installation
 
-## Installation  
+git clone https://github.com/yourusername/Healtify.git
+cd Healtify
+pip install -r requirements.txt
+python app.py
 
-Follow these steps to set up and run the project on your local system:  
+Open in your browser: http://127.0.0.1:5000
+5000
 
-1. Clone the repository to your local machine:  
-   ```bash  
-   git clone https://github.com/BhaveshBhakta/Parkinson-disease-prediction.git  
-   ```  
+🧩 Usage
 
-2. Navigate to the project directory:  
-   ```bash  
-   cd parkinsons-disease-prediction  
-   ```  
+Click Predict Now on the homepage.
 
-3. Install the required dependencies:  
-   ```bash  
-   pip install -r requirements.txt  
-   ```  
+Fill in the 11 medical parameters.
 
-4. Run the application:  
-   ```bash  
-   python app.py  
-   ```  
+Click Predict to get your risk.
 
-5. Open your browser and go to `http://127.0.0.1:5000` to interact with the web application.  
+If Parkinson’s is detected → click Check Severity to see:
 
-## Contributing  
-Contributions are welcome! Feel free to fork the repository, make improvements, and submit a pull request.  
+Severity Level (Mild, Moderate, Severe)
 
-## Website Overview 
+Stage-specific Precautions & Advice
 
-![homepage](https://github.com/user-attachments/assets/f5a67d88-2a26-4b9f-99df-6608a8a80500)
+Optional: AI-generated tips for early-stage Parkinson’s.
 
-![servicepage](https://github.com/user-attachments/assets/174b9cda-becc-4a8d-b2db-785917782caa)
+🤝 Contributing
 
-![predictpage](https://github.com/user-attachments/assets/17ee58f2-3da4-4d2b-a434-74c23d0dbf06)
+Fork → Make changes → Pull Request
 
-![prediciton page](https://github.com/user-attachments/assets/c1d84668-c09a-4065-b899-f5f4ab1313a1)
+Contributions are welcome!

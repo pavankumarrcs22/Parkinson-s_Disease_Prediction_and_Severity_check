@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Parkinson’s Severity Prediction</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/predict_style.css') }}"
+  />
+</head>
+
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>Parkinson’s Severity Detection</h1>
+      <div class="back-home">
+        <a href="/" class="btn">Home</a>
+      </div>
+    </div>
+
+    <p class="note">
+      Enter the following parameters to determine the
+      <strong>severity level</strong> (Mild, Moderate, or Severe) and receive
+      appropriate precautionary recommendations.
+    </p>
+
+    <form id="severityForm">
+      <div id="inputsContainer">
+        <!-- Input Fields -->
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="age">Age</label>
+            <input type="number" step="any" id="age" name="age" required />
+          </div>
+
+          <div class="form-group">
+            <label for="sex">Sex (0 = Male, 1 = Female)</label>
+            <input
+              type="number"
+              step="1"
+              min="0"
+              max="1"
+              id="sex"
+              name="sex"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="test_time">Test Time</label>
+            <input
+              type="number"
+              step="any"
+              id="test_time"
+              name="test_time"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="motor_UPDRS">Motor UPDRS</label>
+            <input
+              type="number"
+              step="any"
+              id="motor_UPDRS"
+              name="motor_UPDRS"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="total_UPDRS">Total UPDRS</label>
+            <input
+              type="number"
+              step="any"
+              id="total_UPDRS"
+              name="total_UPDRS"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Jitter_percent">Jitter(%)</label>
+            <input
+              type="number"
+              step="any"
+              id="Jitter_percent"
+              name="Jitter_percent"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Jitter_Abs">Jitter(Abs)</label>
+            <input
+              type="number"
+              step="any"
+              id="Jitter_Abs"
+              name="Jitter_Abs"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Jitter_RAP">Jitter:RAP</label>
+            <input
+              type="number"
+              step="any"
+              id="Jitter_RAP"
+              name="Jitter_RAP"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Jitter_PPQ5">Jitter:PPQ5</label>
+            <input
+              type="number"
+              step="any"
+              id="Jitter_PPQ5"
+              name="Jitter_PPQ5"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Jitter_DDP">Jitter:DDP</label>
+            <input
+              type="number"
+              step="any"
+              id="Jitter_DDP"
+              name="Jitter_DDP"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Shimmer">Shimmer</label>
+            <input
+              type="number"
+              step="any"
+              id="Shimmer"
+              name="Shimmer"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Shimmer_dB">Shimmer(dB)</label>
+            <input
+              type="number"
+              step="any"
+              id="Shimmer_dB"
+              name="Shimmer_dB"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Shimmer_APQ3">Shimmer:APQ3</label>
+            <input
+              type="number"
+              step="any"
+              id="Shimmer_APQ3"
+              name="Shimmer_APQ3"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Shimmer_APQ5">Shimmer:APQ5</label>
+            <input
+              type="number"
+              step="any"
+              id="Shimmer_APQ5"
+              name="Shimmer_APQ5"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Shimmer_APQ11">Shimmer:APQ11</label>
+            <input
+              type="number"
+              step="any"
+              id="Shimmer_APQ11"
+              name="Shimmer_APQ11"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="Shimmer_DDA">Shimmer:DDA</label>
+            <input
+              type="number"
+              step="any"
+              id="Shimmer_DDA"
+              name="Shimmer_DDA"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="NHR">NHR</label>
+            <input type="number" step="any" id="NHR" name="NHR" required />
+          </div>
+
+          <div class="form-group">
+            <label for="HNR">HNR</label>
+            <input type="number" step="any" id="HNR" name="HNR" required />
+          </div>
+
+          <div class="form-group">
+            <label for="RPDE">RPDE</label>
+            <input type="number" step="any" id="RPDE" name="RPDE" required />
+          </div>
+
+          <div class="form-group">
+            <label for="DFA">DFA</label>
+            <input type="number" step="any" id="DFA" name="DFA" required />
+          </div>
+
+          <div class="form-group">
+            <label for="PPE">PPE</label>
+            <input type="number" step="any" id="PPE" name="PPE" required />
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn">Check Severity</button>
+
+      <div id="loading" style="display:none;">🔍 Checking severity...</div>
+      <div id="severityResult" class="severity-result"></div>
+    </form>
+  </div>
+  <!-- Modal -->
+<div class="modal" id="precautionModal" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Parkinson's Severity Precautions</h5>
+        <button type="button" class="btn-close" onclick="closeModal()"></button>
+      </div>
+      <div class="modal-body" id="modalBody">
+        <!-- Precautions will be inserted here -->
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" onclick="closeModal()">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- 
+  <script>
+    const form = document.getElementById("severityForm");
+    const loading = document.getElementById("loading");
+    const severityDiv = document.getElementById("severityResult");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      loading.style.display = "block";
+      severityDiv.innerHTML = "";
+
+      const formData = new FormData(form);
+      const features = [];
+      formData.forEach((value) => features.push(parseFloat(value)));
+
+      try {
+        const response = await fetch("/predict_severity", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ features }),
+        });
+
+        const data = await response.json();
+        loading.style.display = "none";
+
+        if (data.error) {
+          severityDiv.innerHTML = `<p class="error">${data.error}</p>`;
+          return;
+        }
+
+        severityDiv.innerHTML = `
+          <h3>🩺 Severity Level: <span class="highlight">${data.severity}</span></h3>
+          <h4>✅ Recommended Precautions:</h4>
+          <ul>${data.precautions.map((p) => `<li>${p}</li>`).join("")}</ul>
+        `;
+      } catch (err) {
+        loading.style.display = "none";
+        severityDiv.innerHTML =
+          '<p class="error">⚠️ Error predicting severity. Try again later.</p>';
+      }
+    });
+  </script> 
+  <script>
+const form = document.getElementById("severityForm");
+const loading = document.getElementById("loading");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  loading.style.display = "block";
+
+  const formData = new FormData(form);
+  const features = [];
+  formData.forEach((value) => features.push(parseFloat(value)));
+
+  try {
+    const response = await fetch("/predict_severity", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ features }),
+    });
+
+    const data = await response.json();
+    loading.style.display = "none";
+
+    if (data.error) {
+      alert(data.error); // simple fallback alert
+      return;
+    }
+
+    // Build HTML for modal
+    let precautionsHTML = `<p>🩺 <strong>Severity Level: ${data.severity}</strong></p><ol>`;
+    data.precautions.forEach((p) => {
+      precautionsHTML += `<li>${p}</li>`;
+    });
+    precautionsHTML += `</ol>`;
+
+    // Insert precautions into modal
+    document.getElementById("modalBody").innerHTML = precautionsHTML;
+
+    // Show modal
+    document.getElementById("precautionModal").style.display = "block";
+
+  } catch (err) {
+    loading.style.display = "none";
+    alert("⚠️ Error predicting severity. Try again later.");
+  }
+});
+
+// Close modal function
+// function closeModal() {
+//   document.getElementById("precautionModal").style.display = "none";
+// }
+function showModal() {
+    const modal = document.getElementById("precautionModal");
+    modal.classList.add("show");
+}
+
+function closeModal() {
+    const modal = document.getElementById("precautionModal");
+     document.getElementById("precautionModal").style.display = "none";
+    modal.classList.remove("show");
+}
+
+
+</script>-->
+<script>
+  const form = document.getElementById("severityForm");
+const loading = document.getElementById("loading");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  loading.style.display = "block";
+
+  const formData = new FormData(form);
+  const features = [];
+  formData.forEach((value) => features.push(parseFloat(value)));
+
+  try {
+    const response = await fetch("/predict_severity", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ features }),
+    });
+
+    const data = await response.json();
+    loading.style.display = "none";
+
+    if (data.error) {
+      alert(data.error); // simple fallback alert
+      return;
+    }
+
+    // Build HTML for modal
+    let precautionsHTML = `<p>🩺 <strong>Severity Level: ${data.severity}</strong></p><ol>`;
+    data.precautions.forEach((p) => {
+      precautionsHTML += `<li>${p}</li>`;
+    });
+    precautionsHTML += `</ol>`;
+
+    // Insert precautions into modal
+    document.getElementById("modalBody").innerHTML = precautionsHTML;
+
+    // Show modal with animation
+    showModal();
+
+  } catch (err) {
+    loading.style.display = "none";
+    alert("⚠️ Error predicting severity. Try again later.");
+  }
+});
+
+// Show modal
+function showModal() {
+  const modal = document.getElementById("precautionModal");
+  modal.classList.add("show");
+}
+
+// Close modal
+function closeModal() {
+  const modal = document.getElementById("precautionModal");
+  modal.classList.remove("show");
+  // hide after animation ends
+  setTimeout(() => { modal.style.display = "none"; }, 300);
+}
+
+</script>
+
+</body>
+</html>

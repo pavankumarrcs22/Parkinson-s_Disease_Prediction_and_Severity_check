@@ -32,7 +32,7 @@ canvas {
 #page1 {
     height: 100vh;
     width: 100vw;
-    background: linear-gradient(to bottom, #030a22, #101e52, #1B2F75);
+    background: linear-gradient(to bottom, #030a22, #101e52b5, #1B2F75);
 }
 
 #page1 #nav {
@@ -373,7 +373,7 @@ a {
 #page3 {
     height: 90vh;
     width: 100vw;
-    background: linear-gradient(to bottom, #080F34, #08090F);
+    background: linear-gradient(to bottom, #080f34e6, #08090F);
 }
 
 #page3 #content {
@@ -1272,4 +1272,215 @@ input::placeholder {
         stroke: white;
         stroke-width: 3px;
     }
+}
+
+
+
+/* ===========================
+   Predict Page — Safety Styles
+   =========================== */
+
+/* Variables for easy theming */
+:root{
+  --bg: #f7f8fb;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #0f62fe;         /* blue accent */
+  --accent-2: #0b8457;       /* green for positive */
+  --danger: #dc2626;         /* red for alerts */
+  --glass: rgba(15,98,254,0.06);
+  --shadow: 0 6px 18px rgba(16,24,40,0.08);
+  --radius: 12px;
+  --max-width: 920px;
+  --text: #111827;
+  --success-bg: rgba(11,132,87,0.08);
+  --danger-bg: rgba(220,38,38,0.06);
+}
+
+/* Container basics (if not already present) */
+.container{
+  max-width: var(--max-width);
+  margin: 28px auto;
+  padding: 20px;
+  background: linear-gradient(180deg, var(--bg), #fff);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  color: var(--text);
+}
+
+/* Result box (positive / negative) */
+.result{
+  margin-top: 14px;
+  padding: 14px 16px;
+  border-radius: 10px;
+  font-weight: 600;
+  display: inline-block;
+  line-height: 1.2;
+  box-shadow: 0 2px 8px rgba(16,24,40,0.04);
+}
+
+.result.positive{
+  background: linear-gradient(90deg, var(--success-bg), rgba(11,132,87,0.02));
+  color: var(--accent-2);
+  border-left: 4px solid var(--accent-2);
+}
+
+.result.negative{
+  background: linear-gradient(90deg, var(--danger-bg), rgba(220,38,38,0.02));
+  color: var(--danger);
+  border-left: 4px solid var(--danger);
+}
+
+/* Loading indicator */
+.loading{
+  display: none;
+  margin-top: 12px;
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+
+/* ===========================
+   AI Safety / Advice Panel
+   =========================== */
+
+/* Instruction wrapper */
+#instructions{
+  margin-top: 18px;
+  display: none;                /* shown by JS when advice available */
+  animation: fadeInUp 380ms ease both;
+}
+
+/* Card look */
+.instructions-card{
+  background: var(--card);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  border: 1px solid rgba(15,23,42,0.03);
+  overflow: hidden;
+}
+
+/* Header inside the card */
+.instructions-card .card-header{
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.instructions-card .card-header .icon{
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: grid;
+  place-items: center;
+  font-size: 20px;
+  background: var(--glass);
+  color: var(--accent);
+  flex: 0 0 44px;
+  box-shadow: inset 0 -2px 6px rgba(15,98,254,0.02);
+}
+
+.instructions-card h3{
+  margin: 0;
+  font-size: 1.05rem;
+  letter-spacing: -0.2px;
+}
+
+/* Short intro / summary text */
+.instructions-card p.lead{
+  margin: 8px 0 14px;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Advice content area (may contain paragraphs, lists or HTML from backend) */
+.advice-text{
+  font-size: 0.96rem;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+/* Make lists look nicer */
+.advice-text ul{
+  margin: 6px 0 0 18px;
+  padding: 0;
+  list-style: none; /* we'll use custom bullets */
+}
+
+.advice-text ul li{
+  position: relative;
+  padding-left: 34px;
+  margin: 10px 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0.00), rgba(0,0,0,0.00));
+  border-radius: 8px;
+  padding: 10px 12px 10px 34px;
+  transition: transform 160ms ease, box-shadow 160ms ease;
+}
+
+.advice-text ul li::before{
+  content: "";
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  background: var(--accent-2); /* success color for bullets */
+  box-shadow: 0 1px 0 rgba(0,0,0,0.06);
+}
+
+/* If you want different bullet for warnings / caution (use classes from backend) */
+.advice-text ul li.warning::before{
+  background: var(--danger);
+  border-radius: 2px;
+}
+
+/* Hover micro-interaction */
+.advice-text ul li:hover{
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(2,6,23,0.06);
+}
+
+/* Small meta footer */
+.instructions-card .meta{
+  margin-top: 12px;
+  font-size: 0.83rem;
+  color: var(--muted);
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px){
+  .container{ padding: 14px; }
+  .instructions-card{ padding: 14px; }
+  .advice-text ul li{ padding: 10px; padding-left: 30px; }
+}
+
+/* Tiny animation */
+@keyframes fadeInUp{
+  from{ opacity: 0; transform: translateY(6px); }
+  to{ opacity: 1; transform: translateY(0); }
+}
+
+/* Accessibility: focus outline for keyboard users */
+.advice-text a:focus, .instructions-card button:focus {
+  outline: 3px solid rgba(15,98,254,0.12);
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+/* ===========================
+   Optional: small helpers you may already use
+   =========================== */
+.btn {
+  display: inline-block;
+  padding: 8px 12px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  box-shadow: 0 6px 18px rgba(15,98,254,0.12);
 }

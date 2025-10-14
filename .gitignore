@@ -1,1 +1,19 @@
-myenv
+# Python cache and environment
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+venv/
+env/
+
+# Jupyter Notebooks checkpoints
+.ipynb_checkpoints/
+
+# Model files (if you don’t want to push them)
+*.pkl
+*.joblib
+
+# OS files
+.DS_Store
+Thumbs.db
