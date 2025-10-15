@@ -137,7 +137,9 @@ def generate_advice():
     if 'Parkinson' in prediction:
         try:
             # ⚠️ IMPORTANT: never hardcode keys in production!
-            openai.api_key = "YOUR_OPENAI_API_KEY"
+           
+            import os
+            openai.api_key = os.getenv("OPENAI_API_KEY")
 
             prompt = (
                 "Provide safe, clear, and empathetic medical self-care tips for a person "
